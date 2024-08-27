@@ -2,17 +2,19 @@ package com.crudagenda.contactlistapi.service;
 
 import java.time.LocalDate;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.crudagenda.contactlistapi.entity.Contact;
 import com.crudagenda.contactlistapi.repository.ContactRepository;
 
+import lombok.AllArgsConstructor; // Lombok annotation to Constructor injection of the ContactRepository
+
+@AllArgsConstructor
 @Service
 public class ContactService {
 
-    @Autowired
-    private ContactRepository contactRepository;
+    private final ContactRepository contactRepository;
 
     public Iterable<Contact> findAll() {
         return contactRepository.findAll();
@@ -31,9 +33,7 @@ public class ContactService {
 
     public Contact update(Integer id, Contact form) {
 
-        Contact contactExists = contactRepository
-            .findById(id) 
-            .orElse(null);
+        Contact contactExists = findById(id);
 
         contactExists.setName(form.getName());
         contactExists.setEmail(form.getEmail());
@@ -43,9 +43,7 @@ public class ContactService {
     }
 
     public void delete(Integer id) {
-        Contact contactExists = contactRepository
-                .findById(id)
-                .orElse(null);  
+        Contact contactExists = findById(id);
         contactRepository.delete(contactExists);
     }
 }
