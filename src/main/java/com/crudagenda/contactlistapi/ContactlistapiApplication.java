@@ -21,7 +21,7 @@ public class ContactlistapiApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(ContactRepository contactRepository) {
+	CommandLineRunner runner(ContactRepository contactRepository) { // Adds some data to the database when the application starts
 		return args -> {
 			List<Contact> contacts = Arrays.asList(
 				new Contact("Carlos", "carlos@gmail.com", "123456789", LocalDate.now()),

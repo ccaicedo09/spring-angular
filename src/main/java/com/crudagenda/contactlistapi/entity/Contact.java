@@ -12,11 +12,11 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Getter 
+@Setter // Lombok annotations to generate getters and setters
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor // Lombok annotation to generate a constructor with all required fields
+@NoArgsConstructor // Lombok annotation to generate a constructor with no arguments
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
