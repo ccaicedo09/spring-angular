@@ -1,6 +1,5 @@
 package com.crudagenda.contactlistapi.controller;
 
-import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
 import com.crudagenda.contactlistapi.entity.Contact;
-import com.crudagenda.contactlistapi.repository.ContactRepository;
 import com.crudagenda.contactlistapi.service.ContactService;
 
 
