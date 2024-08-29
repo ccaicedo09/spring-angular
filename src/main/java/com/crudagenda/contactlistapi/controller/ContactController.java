@@ -1,6 +1,7 @@
 package com.crudagenda.contactlistapi.controller;
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.crudagenda.contactlistapi.service.ContactService;
 
 import lombok.AllArgsConstructor;
 
+@CrossOrigin
 @AllArgsConstructor // Lombok annotation to Constructor injection of the ContactService
 @RequestMapping("api/contacts")
 @RestController
