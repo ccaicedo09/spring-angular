@@ -1,23 +1,37 @@
-<h2 class="mb-5">Nuevo contacto</h2>
+<h2 class="mb-5">
+  @if(contact) {
+    Editar
+  } @else {
+    Crear
+  }contacto
+</h2>
 
 <div class="row row-cols-3 justify-content-center">
-  <form [formGroup]="form" (ngSubmit)="create()">
-    <div class="mb-3">
-      <label for="name">Nombre</label>
-      <input id="name" type="text" placeholder="Nombre" class="form-control" formControlName="name">
-    </div>
-    <div class="mb-3">
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="Email" class="form-control" formControlName="email">
-    </div>
-    <div class="mb-3">
-      <label for="phone">Teléfono</label>
-      <input id="phone" type="text" placeholder="Teléfono" class="form-control" formControlName="phone">
-    </div>
+  @if(form) {
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mb-3">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" placeholder="Nombre" class="form-control" formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Email" class="form-control" formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="phone">Teléfono</label>
+        <input id="phone" type="text" placeholder="Teléfono" class="form-control" formControlName="phone">
+      </div>
 
-    <div class="text-end">
-      <button type="button" class="btn btn-light ms-2" routerLink="/">Cancelar</button>
-      <button class="btn btn-primary ms-2">Guardar</button>
-    </div>
-  </form>
+      <div class="text-end">
+        <button type="button" class="btn btn-light ms-2" routerLink="/">Cancelar</button>
+        <button class="btn btn-primary ms-2">
+          @if(contact) {
+            Editar
+          }@else {
+            Crear
+          }
+        </button>
+      </div>
+    </form>
+  }
 </div>
