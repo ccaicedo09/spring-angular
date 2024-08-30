@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,5 +32,10 @@ public class ContactlistapiApplication {
 			);
 			contactRepository.saveAll(contacts);
 		};
+	}
+
+	@Bean
+	ModelMapper modelMapper() {
+		return new ModelMapper();
 	}
 }
