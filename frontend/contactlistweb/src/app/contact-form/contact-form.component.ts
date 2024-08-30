@@ -28,22 +28,27 @@ export default class ContactFormComponent implements OnInit{
         .subscribe(contact => {
           this.contact = contact;
           this.form = this.formBuilder.group({
-            name: [contact.name, Validators.required],
-            email: [contact.email, Validators.required],
-            phone: [contact.phone, Validators.required]
-          })
+            name: [contact.name, [Validators.required]],
+            email: [contact.email, [Validators.required, Validators.email]],
+            phone: [contact.phone, [Validators.required]]
+          });
         })
     } else {
       this.form = this.formBuilder.group({
-        name: ['', Validators.required],
-        email: ['', Validators.required],
-        phone: ['', Validators.required]
+        name: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', [Validators.required]]
       });
     }
   }
 
 
   save() {
+
+    if(this.form?.invalid) { // Prevents the form from being submitted if it is invalid
+      return;
+    }
+
     const contactForm = this.form!.value;
 
     if (this.contact) { // If contact exists, reach out to the update method
