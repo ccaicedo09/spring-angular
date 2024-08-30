@@ -46,6 +46,7 @@ export default class ContactFormComponent implements OnInit{
   save() {
 
     if(this.form?.invalid) { // Prevents the form from being submitted if it is invalid
+      this.form.markAllAsTouched();
       return;
     }
 
