@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 
 import com.crudagenda.contactlistapi.dto.ContactDTO;
 import com.crudagenda.contactlistapi.entity.Contact;
@@ -39,12 +40,12 @@ public class ContactController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Contact create(@RequestBody ContactDTO contactDTO) {
+    public Contact create(@Validated @RequestBody ContactDTO contactDTO) {
         return contactService.create(contactDTO);
     }
 
     @PutMapping("/{id}")
-    public Contact update(@PathVariable("id") Integer id, @RequestBody ContactDTO contactDTO) {
+    public Contact update(@Validated @PathVariable("id") Integer id, @RequestBody ContactDTO contactDTO) {
         return contactService.update(id, contactDTO);
     }
 
